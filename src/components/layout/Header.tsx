@@ -1,7 +1,17 @@
-import React from 'react'
+import Image from "next/image";
+import Navbar from "../ui/Navbar";
+import Heading from "../ui/typography/Heading";
 
 export default function Header() {
   return (
-    <div>Header</div>
-  )
+    <header className="fixed top-0 z-20 w-full py-4 backdrop-blur-sm">
+      <div className="flex justify-between container w-full items-center mx-auto h-20">
+        <div className="flex items-center w-fit gap-5">
+          <Image src="/images/logo-brown.svg" alt="Logo" width={70} height={80} className="text-primary"/>
+          <Heading level={1} className="uppercase text-primary lg:text-5xl">Vin Rouge</Heading>
+        </div>
+        <Navbar />
+      </div>
+    </header>
+  );
 }

@@ -3,7 +3,7 @@ import Heading from "../../ui/typography/Heading";
 
 export default function OurHistory() {
   return (
-    <section className="relative bg-[#FFFBF4] w-full min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative lg:py-16 py-8 w-full flex items-center justify-center overflow-hidden">
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 justify-center items-center gap-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col justify-between gap-5 p-4 sm:p-6 lg:p-8">
           <span className="text-secondary text-sm sm:text-base lg:text-lg tracking-[0.18em] uppercase">
