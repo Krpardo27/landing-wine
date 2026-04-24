@@ -2,6 +2,7 @@
 
 import { motion, type Variants } from "framer-motion";
 import Image from "next/image";
+import Heading from "../../ui/typography/Heading";
 
 const categories = [
   {
@@ -70,11 +71,14 @@ export default function Categories() {
   return (
     <section className="py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div className="max-w-7xl mx-auto mb-10">
-        <h2 className="text-primary text-2xl font-semibold uppercase tracking-wide">
-          Categorías
-        </h2>
-        <p className="text-secondary text-lg">
-          Explora nuestra selección premium de vinos.
+        <Heading level={2} className="text-tertiary uppercase tracking-widest text-sm font-semibold mb-3">
+          Explora Nuestra
+        </Heading>
+        <Heading level={1} className="text-primary uppercase mb-4 leading-tight">
+          Selección Premium
+        </Heading>
+        <p className="text-primary/60 text-lg max-w-xl">
+          Descubre cada categoría y encuentra el vino perfecto para cada ocasión.
         </p>
       </div>
 

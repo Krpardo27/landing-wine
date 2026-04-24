@@ -1,5 +1,6 @@
 import Header from "@/src/components/layout/Header";
 import Categories from "@/src/components/sections/home/Categories";
+import Gallery from "@/src/components/sections/home/Gallery";
 import Hero from "@/src/components/sections/home/Hero";
 import OurHistory from "@/src/components/sections/home/OurHistory";
 import Products from "@/src/components/sections/home/Products";
@@ -18,7 +19,10 @@ export default function HomePage() {
       <Categories />
       <div id="shop" className="scroll-mt-28" />
       <Products />
-      <div id="blog" className="scroll-mt-28" />
+      {/* <div id="blog" className="scroll-mt-28" /> */}
+      <div id="gallery" className="scroll-mt-28" />
+      <Gallery />
+
     </>
   );
 }

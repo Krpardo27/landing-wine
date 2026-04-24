@@ -29,26 +29,29 @@ export default function Step() {
       className="container mx-auto lg:py-16 py-8 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
       <motion.ol
-        className="flex flex-col sm:flex-row items-center justify-between gap-8 w-full list-none"
+        className="flex flex-col sm:flex-row items-stretch justify-between gap-6 sm:gap-0 w-full list-none"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >
-        {steps.map((step) => (
+        {steps.map((step, index) => (
           <motion.li
             key={step.number}
-            className="flex gap-4 items-center"
+            className="flex flex-row sm:flex-1 items-center gap-4 sm:px-6 lg:px-10 sm:py-4"
             variants={itemVariants}
+            style={{
+              borderLeft: index !== 0 ? "1px solid #d1b99150" : undefined,
+            }}
           >
-            <span className="text-tertiary text-7xl font-bold leading-none">
+            <span className="text-tertiary text-5xl sm:text-6xl lg:text-7xl font-bold leading-none shrink-0">
               {step.number}.
             </span>
             <div className="flex flex-col gap-1">
-              <h2 className="text-primary uppercase text-xl font-semibold">
+              <h2 className="text-primary uppercase text-lg sm:text-xl font-semibold">
                 {step.title}
               </h2>
-              <span className="text-secondary text-lg">{step.description}</span>
+              <span className="text-secondary text-base sm:text-lg">{step.description}</span>
             </div>
           </motion.li>
         ))}
