@@ -1,8 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FFFBF4;
   --primary: #482817;
   --secondary: #d1b991;
   --tertiary: #af6900;
@@ -21,7 +20,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #FFFBF4;
     --foreground: #ededed;
   }
 }
@@ -30,4 +29,14 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-libre-baskerville), serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
