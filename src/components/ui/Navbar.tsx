@@ -8,7 +8,7 @@ const navLinks = [
 export default function Navbar() {
   return (
     <nav aria-label="Main navigation">
-      <ul className="flex items-center gap-6 lg:gap-10">
+      <ul className="hidden lg:flex items-center gap-6 lg:gap-10">
         {navLinks.map((link) => (
           <li key={link.label}>
             <a
