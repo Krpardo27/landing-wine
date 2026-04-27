@@ -7,13 +7,13 @@ import Heading from "../../ui/typography/Heading";
 export default function Hero() {
   return (
     <section className="relative bg-[#F5EBDA] w-full min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 bottom-0 z-0">
+      <div className="absolute inset-0 bottom-0 z-0 size-full">
         <Image
           src="/images/hero/hero-bg.png"
           alt="Fondo decorativo de viñedo"
           fill
           priority
-          className="object-contain object-bottom"
+          className="object-cover object-bottom"
         />
       </div>
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 justify-center items-center gap-10 max-w-7xl mx-auto">
@@ -133,6 +133,9 @@ export default function Hero() {
               alt="Imagen principal de vino"
               width={500}
               height={500}
+              priority
+              sizes="100vw"
+              className="w-full h-auto"
             />
           </motion.div>
         </div>

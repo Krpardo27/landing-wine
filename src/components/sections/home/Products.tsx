@@ -145,6 +145,7 @@ export default function Products() {
                       src={product.image}
                       alt={product.name}
                       fill
+                      sizes="(max-width: 640px) 260px, 300px"
                       className="object-contain drop-shadow-xl"
                     />
                   </motion.div>
