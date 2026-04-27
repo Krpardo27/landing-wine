@@ -3,6 +3,7 @@ import Header from "@/src/components/layout/Header";
 import Categories from "@/src/components/sections/home/Categories";
 import Clients from "@/src/components/sections/home/Clients";
 import Gallery from "@/src/components/sections/home/Gallery";
+import GetToKnowUs from "@/src/components/sections/home/GetToKnowUs";
 import Hero from "@/src/components/sections/home/Hero";
 import OurHistory from "@/src/components/sections/home/OurHistory";
 import Owners from "@/src/components/sections/home/Owners";
@@ -26,6 +27,7 @@ export default function HomePage() {
       <div id="gallery" className="scroll-mt-28" />
       <Gallery />
       <Owners />
+      <GetToKnowUs />
       <Clients />
 
       <Footer />
