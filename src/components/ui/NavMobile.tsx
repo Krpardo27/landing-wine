@@ -23,7 +23,7 @@ export default function NavMobile() {
     <>
       {/* BOTÓN */}
       <button
-        onClick={() => setOpen(true)} 
+        onClick={() => setOpen(true)}
         className="lg:hidden relative z-[1000] text-primary cursor-pointer"
       >
         <RxHamburgerMenu size={26} />
@@ -67,7 +67,8 @@ export default function NavMobile() {
                   src="/images/logo.svg"
                   alt="Logo"
                   width={100}
-                  height={100}
+                  height={100} 
+                  style={{ height: 'auto' }} 
                 />
 
                 <button

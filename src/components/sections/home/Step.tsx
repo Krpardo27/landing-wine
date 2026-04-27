@@ -23,7 +23,6 @@ const itemVariants: Variants = {
 export default function Step() {
   return (
     <section
-      id="events"
       aria-label="Steps"
       className="container mx-auto lg:py-16 py-8 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
