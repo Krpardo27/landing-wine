@@ -66,9 +66,9 @@ export default function NavMobile() {
                 <Image
                   src="/images/logo.svg"
                   alt="Logo"
-                  width={70}
-                  height={80}
-                  className="h-auto"
+                  width={100}
+                  height={100} 
+                  style={{ height: 'auto' }} 
                 />
 
                 <button

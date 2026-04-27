@@ -9,28 +9,36 @@ const containerVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
+      staggerChildren: 0.12,
+      delayChildren: 0.15,
     },
   },
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 50, scale: 0.96 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
+    scale: 1,
+    transition: {
+      duration: 0.55,
+      ease: [0.22, 1, 0.36, 1],
+    },
   },
 };
 
 const imageVariants: Variants = {
-  hidden: { opacity: 0, x: 50, scale: 0.95 },
+  hidden: { opacity: 0, x: 80, scale: 0.92 },
   visible: {
     opacity: 1,
     x: 0,
     scale: 1,
-    transition: { duration: 0.8, ease: "easeOut", delay: 0.3 },
+    transition: {
+      duration: 0.75,
+      ease: [0.22, 1, 0.36, 1],
+      delay: 0.2,
+    },
   },
 };
 
@@ -38,7 +46,7 @@ export default function GetToKnowUs() {
   return (
     <section className="py-16 w-full">
       <motion.div
-        className="
+        className="max-w-7xl mx-auto
       bg-[#F5EBDA] 
       px-6 py-10 lg:px-10 lg:py-14  m-10
     "
@@ -47,7 +55,7 @@ export default function GetToKnowUs() {
         viewport={{ once: true, amount: 0.2 }}
         variants={containerVariants}
       >
-        <div className="grid lg:grid-cols-2 lg:p-12 gap-8 lg:gap-10 items-center w-full">
+        <div className=" grid lg:grid-cols-2 lg:p-12 gap-8 lg:gap-10 items-center w-full">
           {/* Columna izquierda */}
           <motion.div
             variants={itemVariants}

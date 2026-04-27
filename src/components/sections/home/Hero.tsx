@@ -133,9 +133,8 @@ export default function Hero() {
               alt="Imagen principal de vino"
               width={500}
               height={500}
+              style={{ height: 'auto' }}
               priority
-              sizes="100vw"
-              className="w-full h-auto"
             />
           </motion.div>
         </div>

@@ -36,16 +36,11 @@ export default function Header() {
             src="/images/logo-brown.svg"
             alt="Logo"
             width={70}
-            height={80}
-            className="w-[70px] h-auto"
-            loading="lazy"
+            height={80} 
+            style={{ height: 'auto' }}
+            className="text-primary"
           />
-          <Heading
-            level={1}
-            className="uppercase text-primary lg:text-2xl text-xl"
-          >
-            Vin Rouge
-          </Heading>
+          <Heading level={1} className="uppercase text-primary lg:text-2xl text-xl">Vin Rouge</Heading>
         </div>
 
         <Navbar />
