@@ -113,7 +113,7 @@ export default function Owners() {
             className="group relative overflow-hidden rounded-2xl"
           >
             {/* IMAGE */}
-            <div className="relative w-full aspect-[3/4] overflow-hidden">
+            <div className="relative w-full size-92 overflow-hidden">
               <Image
                 src={owner.src}
                 alt={owner.name}

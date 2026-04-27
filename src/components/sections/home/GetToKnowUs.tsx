@@ -90,11 +90,12 @@ export default function GetToKnowUs() {
 
           {/* Imagen */}
           <motion.div variants={imageVariants} className="flex justify-center">
-            <div className="relative w-full max-w-sm aspect-square overflow-hidden rounded-lg">
+            <div className="relative w-[500px] aspect-square overflow-hidden rounded-lg">
               <Image
                 src="/images/knowUs.png"
                 alt="Nuestros propietarios"
                 fill
+                sizes="(max-width: 768px) 100vw, 500px"
                 className="object-cover"
               />
             </div>
