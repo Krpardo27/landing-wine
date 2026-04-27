@@ -141,7 +141,7 @@ export default function Gallery() {
             level={3}
             className="text-primary uppercase mb-4 leading-tight"
           >
-            Aroma Natural 
+            Aroma Natural
           </Heading>
           <Heading
             level={1}
@@ -164,37 +164,58 @@ export default function Gallery() {
           {galleryImages.map((image) => (
             <motion.article
               key={image.id}
-              className="cursor-pointer"
+              className="cursor-pointer group"
               variants={imageVariants}
-              whileHover="hover"
               onClick={() => setLightboxIndex(image.id - 1)}
             >
-              <div className="relative w-full h-72 overflow-hidden rounded-md bg-[#F5EBDA] group">
-                <motion.img
+              <motion.div
+                className="
+      relative w-full h-72 overflow-hidden rounded-md bg-[#F5EBDA]"
+                whileHover={{ y: -4 }}
+              >
+                {/* IMAGE */}
+                <Image
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-full object-cover"
-                  initial={{ scale: 1 }}
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  width={400}
+                  height={300}
+                  className="
+        w-full h-full object-cover
+        transition-all duration-500
+        group-hover:brightness-75 group-hover:contrast-110
+      "
                 />
+
+                {/* OVERLAY SUAVE */}
                 <motion.div
-                  className="absolute inset-0 flex items-center justify-center bg-black"
+                  className="absolute inset-0 bg-black"
                   initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 0.4 }}
+                  whileHover={{ opacity: 0.25 }}
                   transition={{ duration: 0.3 }}
                 />
+
+                {/* BORDE HOVER */}
+                <div
+                  className="
+        absolute inset-0 rounded-md
+        border border-transparent
+        group-hover:border-white/40
+        transition-all duration-300
+      "
+                />
+
+                {/* CTA */}
                 <motion.div
                   className="absolute inset-0 flex items-center justify-center"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileHover={{ opacity: 1, scale: 1 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  initial={{ opacity: 0, y: 8 }}
+                  whileHover={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.25 }}
                 >
                   <span className="text-white text-sm font-semibold uppercase tracking-wider px-4 py-2 rounded-lg border border-white">
                     Ver
                   </span>
                 </motion.div>
-              </div>
+              </motion.div>
             </motion.article>
           ))}
         </motion.div>
