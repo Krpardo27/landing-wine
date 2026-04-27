@@ -137,6 +137,7 @@ export default function Hero() {
               height={500}
               style={{ height: 'auto' }}
               priority
+              fetchPriority="high"
               loading="eager"
               sizes="(max-width: 768px) 100vw, 500px"
             />
