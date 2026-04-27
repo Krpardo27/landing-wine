@@ -294,8 +294,8 @@ export default function Gallery() {
             >
               <motion.div variants={iconImgVariants} className="shrink-0">
                 <Image
-                  src="/images/gallery/icons-1.svg"
-                  alt="Icon description"
+                  src={icon.src}
+                  alt={icon.name}
                   width={40}
                   height={40}
                   style={{ height: 'auto' }}
