@@ -87,7 +87,7 @@ export default function Products() {
             variants={itemVariants}
           >
             <Heading level={1} className="text-secondary">
-              Auge SEd Nec
+              Nuestra Selección
             </Heading>
             <Heading
               level={2}

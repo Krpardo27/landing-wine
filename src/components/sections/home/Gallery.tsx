@@ -127,7 +127,31 @@ export default function Gallery() {
   }));
 
   return (
-    <section className="lg:py-16 py-8 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="lg:py-16 py-8 px-4 sm:px-6 lg:px-8 overflow-hidden relative">
+      <div
+        className="absolute hidden md:block lg:-left-30 lg:top-[160px]"
+      >
+        <div
+          className="bg-[#F5EBDA] shadow-xl relative overflow-hidden"
+          style={{
+            width: "620px",
+            height: "550px",
+            clipPath: "polygon(10% 0%, 100% 15%, 90% 100%, 0% 100%)",
+          }}
+        >
+          {/* CONTENEDOR DE CONTROL */}
+          <div className="absolute inset-0 flex   p-10 lg:left-18 bottom-0">
+            <div className="relative lg:size-130">
+              <Image
+                src="/images/gallery/gallery-hero.png"
+                alt="Decoración galería"
+                fill
+                className="object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
       <motion.div
         className="max-w-7xl mx-auto"
         initial="hidden"
@@ -136,16 +160,19 @@ export default function Gallery() {
         variants={containerVariants}
       >
         {/* Header */}
-        <motion.div className="mb-12 flex flex-col justify-center items-center text-center" variants={headerVariants}>
+        <motion.div
+          className="mb-12 flex flex-col justify-center items-center text-center"
+          variants={headerVariants}
+        >
           <Heading
             level={3}
-            className="text-primary uppercase mb-4 leading-tight"
+            className="text-tertiary uppercase mb-4 leading-tight"
           >
             Aroma Natural
           </Heading>
           <Heading
             level={1}
-            className="text-tertiary uppercase tracking-widest font-semibold mb-3"
+            className="text-primary uppercase tracking-widest font-semibold mb-3"
           >
             a Cada Instante
           </Heading>
@@ -158,7 +185,7 @@ export default function Gallery() {
 
         {/* Grid 3x2 */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-2"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-2 z-20 relative"
           variants={containerVariants}
         >
           {galleryImages.map((image) => (

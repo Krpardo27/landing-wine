@@ -23,8 +23,8 @@ export default function NavMobile() {
     <>
       {/* BOTÓN */}
       <button
-        onClick={() => setOpen(true)}
-        className="lg:hidden relative z-[1000] text-primary"
+        onClick={() => setOpen(true)} 
+        className="lg:hidden relative z-[1000] text-primary cursor-pointer"
       >
         <RxHamburgerMenu size={26} />
       </button>
@@ -36,9 +36,9 @@ export default function NavMobile() {
             <motion.div
               className="
                 fixed top-0 left-0 w-full h-screen
-                z-[999]
-                bg-black/50
-                backdrop-blur-md
+                bg-black/70
+                backdrop-blur-lg
+                z-[900]
               "
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -49,12 +49,12 @@ export default function NavMobile() {
             {/* PANEL */}
             <motion.div
               className="
-                fixed top-0 right-0 h-screen w-[85%] max-w-sm
+                fixed top-0 right-0 h-screen w-[85%] max-w-sm 
                 bg-[#FFFBF4]
                 z-[1000]
                 flex flex-col
                 px-6 pt-6 pb-10
-                shadow-2xl
+                shadow-2xl backdrop-blur-2xl
               "
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
@@ -72,7 +72,7 @@ export default function NavMobile() {
 
                 <button
                   onClick={() => setOpen(false)}
-                  className="text-primary"
+                  className="text-primary cursor-pointer"
                 >
                   <RxCross2 size={26} />
                 </button>
