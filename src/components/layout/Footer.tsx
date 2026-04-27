@@ -5,15 +5,15 @@ import { FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
 export default function Footer() {
   return (
     <footer className="bg-[#F5EBDA] text-white py-16 relative overflow-hidden">
-      <div className="absolute inset-0 bottom-0 z-20">
-             <Image
-               src="/images/bg-footer.png"
-               alt="Fondo decorativo de viñedo"
-               fill
-               priority
-               className="object-contain object-bottom"
-             />
-           </div>
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/bg-footer.png"
+          alt="Fondo decorativo de viñedo"
+          fill
+          priority
+          className="object-contain object-bottom "
+        />
+      </div>
       <div className="px-6 container mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Column 1: Logo */}
@@ -101,9 +101,7 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4 border-primary border-b-2 text-primary uppercase">
               Novedades
             </h4>
-            <p className="text-[#BB6500] text-sm mb-2">
-              Mantente al día
-            </p>
+            <p className="text-[#BB6500] text-sm mb-2">Mantente al día</p>
             <div className="space-y-3">
               <div>
                 <span className="text-[#BB6500] text-xs">15 Abr 2026</span>

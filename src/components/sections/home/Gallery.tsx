@@ -140,8 +140,8 @@ export default function Gallery() {
           }}
         >
           {/* CONTENEDOR DE CONTROL */}
-          <div className="absolute inset-0 flex   p-10 lg:left-18 bottom-0">
-            <div className="relative lg:size-130">
+          <div className="absolute inset-0 flex p-10 lg:left-18 bottom-0">
+            <div className="relative size-130">
               <Image
                 src="/images/gallery/gallery-hero.png"
                 alt="Decoración galería"
@@ -291,8 +291,8 @@ export default function Gallery() {
               initial="rest"
               animate="rest"
             >
-              <motion.div variants={iconImgVariants} className="shrink-0">
-                <Image src={icon.src} alt={icon.name} width={56} height={56} />
+              <motion.div variants={iconImgVariants} className="shrink-0 size-12 relative">
+                <Image src={icon.src} alt={icon.name} fill />
               </motion.div>
               <div className="flex flex-col justify-center">
                 <h3 className="text-primary font-semibold uppercase text-sm tracking-wide mb-1">

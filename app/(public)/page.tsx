@@ -5,6 +5,7 @@ import Clients from "@/src/components/sections/home/Clients";
 import Gallery from "@/src/components/sections/home/Gallery";
 import GetToKnowUs from "@/src/components/sections/home/GetToKnowUs";
 import Hero from "@/src/components/sections/home/Hero";
+import NewsLetter from "@/src/components/sections/home/NewsLetter";
 import OurHistory from "@/src/components/sections/home/OurHistory";
 import Owners from "@/src/components/sections/home/Owners";
 import Products from "@/src/components/sections/home/Products";
@@ -28,8 +29,8 @@ export default function HomePage() {
       <Gallery />
       <Owners />
       <GetToKnowUs />
+      <NewsLetter />
       <Clients />
-
       <Footer />
     </>
   );
