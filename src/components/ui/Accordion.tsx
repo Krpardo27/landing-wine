@@ -30,31 +30,35 @@ const items = [
 ];
 
 export default function Accordion() {
-  const [openIndex, setOpenIndex] = useState<number>(0); // Primer ítem abierto
+  const [openIndex, setOpenIndex] = useState<number>(0);
 
   const toggle = (idx: number) => {
     setOpenIndex(openIndex === idx ? -1 : idx);
   };
 
   return (
-    <div className="w-full border border-primary overflow-hidden shadow">
+    <div className="w-full max-w-full border border-primary overflow-hidden shadow box-border">
       {items.map((item, idx) => (
-        <div key={idx} className={`border-b border-primary last:border-b-0`}>
+        <div key={idx} className="border-b border-primary last:border-b-0">
           <button
-            className="w-full text-left py-4 px-5 font-semibold text-primary focus:outline-none flex justify-between items-center transition-colors"
+            className="w-full text-left py-4 px-5 font-semibold text-primary focus:outline-none flex justify-between items-center transition-colors gap-4"
             onClick={() => toggle(idx)}
-            aria-expanded={openIndex === idx}
-            aria-controls={`accordion-content-${idx}`}
           >
-            {item.title}
-            <span className="ml-2 text-lg border border-primary rounded-full p-2">
+            {/* El texto debe poder envolverse (wrap) si es muy largo */}
+            <span className="flex-1 text-sm sm:text-base leading-tight break-words">
+              {item.title}
+            </span>
+
+            {/* El icono no debe encogerse (flex-shrink-0) */}
+            <span className="flex-shrink-0 text-xs sm:text-lg border border-primary rounded-full p-1 sm:p-2">
               {openIndex === idx ? <FaChevronUp /> : <FaChevronDown />}
             </span>
           </button>
+
           {openIndex === idx && (
             <div
               id={`accordion-content-${idx}`}
-              className="px-5 pb-5 text-tertiary animate-fadeIn"
+              className="px-5 pb-5 text-tertiary animate-fadeIn text-sm sm:text-base break-words"
             >
               {item.content}
             </div>

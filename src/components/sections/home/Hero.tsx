@@ -13,6 +13,8 @@ export default function Hero() {
           alt="Fondo decorativo de viñedo"
           fill
           priority
+          loading="eager"
+          sizes="100vw"
           className="object-cover object-bottom"
         />
       </div>
@@ -119,8 +121,8 @@ export default function Hero() {
           {/* Bottle */}
           <motion.div
             className="relative z-10"
-            initial={{ opacity: 0, y: 60, rotate: -4 }}
-            animate={{ opacity: 1, y: 0, rotate: 0 }}
+            initial={{ y: 60, rotate: -4 }}
+            animate={{ y: 0, rotate: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
             whileHover={{
               y: -12,
@@ -135,6 +137,8 @@ export default function Hero() {
               height={500}
               style={{ height: 'auto' }}
               priority
+              loading="eager"
+              sizes="(max-width: 768px) 100vw, 500px"
             />
           </motion.div>
         </div>
