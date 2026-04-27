@@ -1,6 +1,7 @@
 import Footer from "@/src/components/layout/Footer";
 import Header from "@/src/components/layout/Header";
 import Categories from "@/src/components/sections/home/Categories";
+import Clients from "@/src/components/sections/home/Clients";
 import Gallery from "@/src/components/sections/home/Gallery";
 import Hero from "@/src/components/sections/home/Hero";
 import OurHistory from "@/src/components/sections/home/OurHistory";
@@ -23,6 +24,7 @@ export default function HomePage() {
       {/* <div id="blog" className="scroll-mt-28" /> */}
       <div id="gallery" className="scroll-mt-28" />
       <Gallery />
+      <Clients />
 
       <Footer />
     </>
