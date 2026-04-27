@@ -19,7 +19,7 @@ export default function Hero() {
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 justify-center items-center gap-10 max-w-7xl mx-auto">
         {/* Text */}
         <motion.div
-          className="flex flex-col justify-between gap-5 p-4 sm:p-6 lg:p-8 lg:mt-0 mt-20"
+          className="flex flex-col justify-between gap-5 p-4 sm:p-6 lg:p-8 lg:mt-0 mt-28"
           initial="hidden"
           animate="visible"
           variants={{
