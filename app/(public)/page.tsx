@@ -1,8 +1,11 @@
+import Footer from "@/src/components/layout/Footer";
 import Header from "@/src/components/layout/Header";
 import Categories from "@/src/components/sections/home/Categories";
+import Clients from "@/src/components/sections/home/Clients";
 import Gallery from "@/src/components/sections/home/Gallery";
 import Hero from "@/src/components/sections/home/Hero";
 import OurHistory from "@/src/components/sections/home/OurHistory";
+import Owners from "@/src/components/sections/home/Owners";
 import Products from "@/src/components/sections/home/Products";
 import Step from "@/src/components/sections/home/Step";
 
@@ -22,7 +25,10 @@ export default function HomePage() {
       {/* <div id="blog" className="scroll-mt-28" /> */}
       <div id="gallery" className="scroll-mt-28" />
       <Gallery />
+      <Owners />
+      <Clients />
 
+      <Footer />
     </>
   );
 }
