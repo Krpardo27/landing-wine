@@ -1,3 +1,4 @@
+import Footer from "@/src/components/layout/Footer";
 import Header from "@/src/components/layout/Header";
 import Categories from "@/src/components/sections/home/Categories";
 import Gallery from "@/src/components/sections/home/Gallery";
@@ -23,6 +24,7 @@ export default function HomePage() {
       <div id="gallery" className="scroll-mt-28" />
       <Gallery />
 
+      <Footer />
     </>
   );
 }
