@@ -1,8 +1,8 @@
 const navLinks = [
   { label: "Home", href: "#home" },
   { label: "Shop", href: "#shop" },
+  { label: "Socios", href: "#socios" },
   { label: "Events", href: "#events" },
-  { label: "Blog", href: "#blog" },
 ];
 
 export default function Navbar() {
