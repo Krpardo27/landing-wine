@@ -72,7 +72,7 @@ export default function Products() {
   }, [emblaApi]);
 
   return (
-    <section className="lg:py-16 py-8 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="lg:py-16 py-8 px-4 sm:px-6 lg:px-8 overflow-x-hidden">
       <motion.div
         className="max-w-7xl mx-auto"
         initial="hidden"
@@ -116,11 +116,13 @@ export default function Products() {
 
         {/* Carrusel */}
         <div className="overflow-hidden pb-14" ref={emblaRef}>
-          <div className="flex gap-6">
-            {products.map((product) => (
+          <div className="flex gap-6 mx-4">
+            {products.map((product, index) => (
               <div
                 key={product.id}
-                className="flex-[0_0_80%] sm:flex-[0_0_45%] lg:flex-[0_0_30%]"
+                className={`flex-[0_0_80%] sm:flex-[0_0_45%] lg:flex-[0_0_30%] ${
+                  index === 0 ? "ml-4" : index === products.length - 1 ? "mr-4" : ""
+                }`}
               >
                 {/* Card con imagen sobresaliendo por la izquierda */}
                 <motion.div

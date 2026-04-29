@@ -80,7 +80,7 @@ const events = [
 
 export default function Events() {
   return (
-    <section className="py-16 lg:py-24 bg-[#F5EBDA]/30">
+    <section className="py-16 lg:py-24 bg-[#F5EBDA]/30 overflow-x-hidden">
       <motion.div
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         initial="hidden"
@@ -112,7 +112,7 @@ export default function Events() {
         </motion.div>
 
         {/* Grid cols-2 */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-w-0">
           {/* LEFT - Lista de eventos */}
           <motion.div variants={itemVariants} className="flex flex-col gap-5">
             {events.map((event, index) => (
@@ -120,9 +120,9 @@ export default function Events() {
                 key={event.id}
                 variants={cardVariants}
                 whileHover="hover"
-                className="flex h-[140px] rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow"
+                className="flex h-[140px] w-full min-w-0 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow"
               >
-                <div className="relative w-[160px] flex-shrink-0">
+                <div className="relative flex-1 min-w-0 bg-tertiary/10 overflow-hidden">
                   <Image
                     src={event.image}
                     alt={event.title}
@@ -142,11 +142,11 @@ export default function Events() {
                   />
 
                   <div className="absolute inset-0 p-4 flex flex-col justify-center">
-                    <h3 className="text-primary font-semibold uppercase text-sm tracking-wide mb-2">
+                    <h3 className="truncate text-primary font-semibold uppercase text-sm tracking-wide mb-2">
                       {event.title}
                     </h3>
 
-                    <div className="flex flex-wrap gap-3 text-xs text-primary">
+                    <div className="flex flex-wrap gap-3 text-xs text-primary max-w-full">
                       <span className="flex items-center gap-1">
                         <FaCalendarAlt className="text-secondary text-[10px]" />
                         {event.date}
@@ -174,7 +174,7 @@ export default function Events() {
           {/* RIGHT - Hero imagen */}
           <motion.div
             variants={imageVariants}
-            className="relative w-full h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-xl"
+            className="relative w-full h-[400px] min-w-0 lg:h-[500px] rounded-2xl overflow-hidden shadow-xl"
           >
             <Image
               src="/images/events/hero-events.png"

@@ -16,7 +16,15 @@ export default function NavMobile() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "auto";
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [open]);
 
   return (
@@ -24,7 +32,7 @@ export default function NavMobile() {
       {/* BOTÓN */}
       <button
         onClick={() => setOpen(true)}
-        className="lg:hidden relative z-[1000] text-primary cursor-pointer"
+        className="lg:hidden relative z-50 text-primary cursor-pointer overflow-hidden"
       >
         <RxHamburgerMenu size={26} />
       </button>
@@ -35,10 +43,10 @@ export default function NavMobile() {
             {/* BACKDROP (FIX REAL) */}
             <motion.div
               className="
-                fixed top-0 left-0 w-full h-screen
+                fixed top-0 left-0 w-full h-dvh
                 bg-black/70
                 backdrop-blur-lg
-                z-[900]
+                z-900 overflow-x-hidden
               "
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -49,9 +57,11 @@ export default function NavMobile() {
             {/* PANEL */}
             <motion.div
               className="
-                fixed top-0 right-0 h-screen w-[85%] max-w-sm 
+                fixed top-0 right-0 h-dvh w-[85%] max-w-sm 
                 bg-[#FFFBF4]
-                z-[1000]
+                z-1000
+                max-h-dvh 
+                overflow-y-auto
                 flex flex-col
                 px-6 pt-6 pb-10
                 shadow-2xl backdrop-blur-2xl
@@ -67,8 +77,8 @@ export default function NavMobile() {
                   src="/images/logo.svg"
                   alt="Logo"
                   width={100}
-                  height={100} 
-                  style={{ height: 'auto' }} 
+                  height={100}
+                  style={{ height: "auto" }}
                 />
 
                 <button

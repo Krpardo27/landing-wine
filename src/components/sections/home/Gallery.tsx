@@ -129,7 +129,7 @@ export default function Gallery() {
   return (
     <section className="lg:py-16 py-8 px-4 sm:px-6 lg:px-8 overflow-hidden relative">
       <div
-        className="absolute hidden md:block lg:-left-30 lg:top-[160px]"
+        className="absolute hidden lg:block lg:-left-30 lg:top-[160px]"
       >
         <div
           className="bg-[#F5EBDA] shadow-xl relative overflow-hidden"
@@ -140,7 +140,7 @@ export default function Gallery() {
           }}
         >
           {/* CONTENEDOR DE CONTROL */}
-          <div className="absolute inset-0 flex   p-10 lg:left-18 bottom-0">
+          <div className="absolute inset-0 flex p-10 lg:left-18 bottom-0">
             <div className="relative lg:size-130 w-64 h-64">
               <Image
                 src="/images/gallery/gallery-hero.png"
