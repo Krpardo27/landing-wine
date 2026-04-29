@@ -80,7 +80,7 @@ const events = [
 
 export default function Events() {
   return (
-    <section className="py-16 lg:py-24 bg-[#F5EBDA]/30 overflow-x-hidden">
+    <section className="py-16 lg:py-18 bg-[#F5EBDA]/30 overflow-x-hidden">
       <motion.div
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         initial="hidden"

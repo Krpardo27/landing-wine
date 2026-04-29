@@ -6,6 +6,7 @@ import Image from "next/image";
 import Navbar from "../ui/Navbar";
 import NavMobile from "../ui/NavMobile";
 import Heading from "../ui/typography/Heading";
+import Socials from "../ui/Socials";
 
 export default function Header() {
   const { scrollY } = useScroll();
@@ -36,7 +37,7 @@ export default function Header() {
             src="/images/logo-brown.svg"
             alt="Logo"
             width={70}
-            height={80} 
+            height={80}
             style={{ height: 'auto' }}
             className="text-primary"
           />
@@ -44,6 +45,9 @@ export default function Header() {
         </div>
 
         <Navbar />
+        <div className="hidden lg:flex">
+          <Socials />
+        </div>
         <NavMobile />
       </div>
     </motion.header>

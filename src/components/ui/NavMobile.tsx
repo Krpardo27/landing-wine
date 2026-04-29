@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { RxHamburgerMenu, RxCross2 } from "react-icons/rx";
 import Image from "next/image";
+import Socials from "./Socials";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -63,7 +64,7 @@ export default function NavMobile() {
                 max-h-dvh 
                 overflow-y-auto
                 flex flex-col
-                px-6 pt-6 pb-10
+                px-6 pt-2 pb-5
                 shadow-2xl backdrop-blur-2xl
               "
               initial={{ x: "100%" }}
@@ -108,25 +109,49 @@ export default function NavMobile() {
                       visible: { opacity: 1, x: 0 },
                     }}
                   >
-                    <a
+                    <motion.a
                       href={link.href}
                       onClick={() => setOpen(false)}
+                      whileHover={{ x: 6 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 20,
+                      }}
                       className="
-                        text-primary uppercase tracking-[0.18em]
-                        text-lg font-medium
-                      "
+    relative inline-block
+    text-primary uppercase tracking-[0.18em]
+    text-lg font-medium
+    transition-colors duration-300
+    hover:text-tertiary
+
+    after:content-['']
+    after:absolute
+    after:left-0
+    after:-bottom-1
+    after:w-0
+    after:h-[1px]
+    after:bg-tertiary
+    after:transition-all
+    after:duration-300
+
+    hover:after:w-full
+  "
                     >
                       {link.label}
-                    </a>
+                    </motion.a>
                   </motion.li>
                 ))}
               </motion.ul>
 
               {/* FOOTER */}
-              <div className="mt-auto pt-10">
-                <p className="text-xs text-secondary tracking-widest uppercase">
-                  © 2026 Winery
-                </p>
+              <div className="flex-1 flex flex-col justify-end gap-4">
+                <Socials />
+                <div className="border-t border-secondary/30 pt-4">
+                  <p className="text-base text-center text-secondary tracking-widest uppercase">
+                    © 2026 Winery
+                  </p>
+                </div>
               </div>
             </motion.div>
           </>

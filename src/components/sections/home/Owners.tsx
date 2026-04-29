@@ -73,80 +73,87 @@ const owners = [
 
 export default function Owners() {
   return (
-    <section className="py-20">
-      {/* HEADER */}
-      <motion.header
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="flex flex-col items-center text-center mb-16"
-      >
-        <Heading
-          level={2}
-          className="text-secondary uppercase tracking-widest mb-2"
-        >
-          Conoce a nuestros socios
-        </Heading>
-
-        <Heading
-          level={1}
-          className="text-primary uppercase text-3xl sm:text-4xl lg:text-5xl"
-        >
-          Nuestros Propietarios
-        </Heading>
-
-        <div className="w-16 h-[2px] bg-primary mt-4" />
-      </motion.header>
-
-      {/* GRID */}
+    <section id="socios" className="py-16 lg:py-42">
       <motion.div
-        variants={containerVariants}
+        className="max-w-7xl mx-auto"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true }}
-        className="max-w-7xl mx-auto px-4 grid grid-cols-2 lg:grid-cols-4 gap-6"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={containerVariants}
       >
-        {owners.map((owner, index) => (
-          <motion.div
-            key={index}
-            variants={cardVariants}
-            className="group relative overflow-hidden rounded-2xl"
+        {/* HEADER */}
+        <motion.header
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="flex flex-col items-center text-center mb-16"
+        >
+          <Heading
+            level={2}
+            className="text-secondary uppercase tracking-widest mb-2"
           >
-            {/* IMAGE */}
-            <div className="relative w-full size-92 overflow-hidden">
-              <Image
-                src={owner.src}
-                alt={owner.name}
-                fill
-                // Add this line below
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-            </div>
+            Conoce a nuestros socios
+          </Heading>
 
-            {/* CONTENT */}
-            <div className="p-5">
-              <h3 className="text-primary uppercase font-semibold tracking-wide">
-                {owner.name}
-              </h3>
+          <Heading
+            level={1}
+            className="text-primary uppercase text-3xl sm:text-4xl lg:text-5xl"
+          >
+            Nuestros Propietarios
+          </Heading>
 
-              <p className="text-tertiary text-xs uppercase tracking-widest mt-1">
-                {owner.role}
-              </p>
+          <div className="w-16 h-[2px] bg-primary mt-4" />
+        </motion.header>
 
-              <div className="w-10 h-[1px] bg-secondary mx-auto my-3 opacity-40" />
+        {/* GRID */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="max-w-7xl mx-auto px-4 grid grid-cols-2 lg:grid-cols-4 gap-6"
+        >
+          {owners.map((owner, index) => (
+            <motion.div
+              key={index}
+              variants={cardVariants}
+              className="group relative overflow-hidden rounded-2xl"
+            >
+              {/* IMAGE */}
+              <div className="relative w-full size-92 overflow-hidden">
+                <Image
+                  src={owner.src}
+                  alt={owner.name}
+                  fill
+                  // Add this line below
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+              </div>
 
-              <p className="text-sm text-secondary leading-relaxed mb-4 italic">
-                {owner.description}
-              </p>
+              {/* CONTENT */}
+              <div className="p-5">
+                <h3 className="text-primary uppercase font-semibold tracking-wide">
+                  {owner.name}
+                </h3>
 
-              {/* SOCIALS */}
-              <div className="flex">
-                {owner.social.map((social, idx) => (
-                  <a
-                    key={idx}
-                    href={social.link}
-                    className="
+                <p className="text-tertiary text-xs uppercase tracking-widest mt-1">
+                  {owner.role}
+                </p>
+
+                <div className="w-10 h-[1px] bg-secondary mx-auto my-3 opacity-40" />
+
+                <p className="text-sm text-secondary leading-relaxed mb-4 italic">
+                  {owner.description}
+                </p>
+
+                {/* SOCIALS */}
+                <div className="flex">
+                  {owner.social.map((social, idx) => (
+                    <a
+                      key={idx}
+                      href={social.link}
+                      className="
         w-10 h-10 flex items-center justify-center
         border 
         text-primary
@@ -155,14 +162,15 @@ export default function Owners() {
         hover:-translate-y-1
         transition-all duration-300
       "
-                  >
-                    <social.icon size={18} />
-                  </a>
-                ))}
+                    >
+                      <social.icon size={18} />
+                    </a>
+                  ))}
+                </div>
               </div>
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))}
+        </motion.div>
       </motion.div>
     </section>
   );

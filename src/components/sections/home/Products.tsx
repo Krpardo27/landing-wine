@@ -86,17 +86,17 @@ export default function Products() {
             className="flex flex-col text-center"
             variants={itemVariants}
           >
-            <Heading level={1} className="text-secondary">
+            <Heading level={1} className="text-secondary text-left">
               Nuestra Selección
             </Heading>
             <Heading
               level={2}
-              className="text-primary uppercase my-2 sm:my-3 lg:my-4 text-3xl sm:text-4xl lg:text-5xl leading-14"
+              className="  text-left text-primary uppercase my-2 sm:my-3 lg:my-4 text-3xl sm:text-4xl lg:text-5xl leading-14"
             >
               Nuestra selección <br />
               de vinos
             </Heading>
-            <p className="text-secondary text-lg max-w-[40ch]">
+            <p className="text-secondary text-left text-lg max-w-[40ch]">
               Descubre nuestra exclusiva selección de vinos, cuidadosamente
               elegidos para los paladares más exigentes.
             </p>
