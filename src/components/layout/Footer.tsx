@@ -42,7 +42,7 @@ export default function Footer() {
               </p>
               <p className="text-[#9E845C] flex items-center gap-2">
                 <FaMapMarkerAlt className="text-[#BB6500]" />
-                Valle de Guadalupe, BC
+                Valle del Vino, Chile
               </p>
               <p className="text-[#9E845C] flex items-center gap-2">
                 <FaPhone className="text-[#BB6500]" />
