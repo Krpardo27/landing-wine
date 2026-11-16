@@ -1,8 +1,4 @@
-"use client";
-
-import { motion, type Variants } from "framer-motion";
 import Image from "next/image";
-import Heading from "../../ui/typography/Heading";
 
 const categories = [
   {
@@ -13,8 +9,6 @@ const categories = [
     alt: "Botella de vino Pinot Noir",
     w: 258,
     h: 272,
-    // botella ancha — centrada verticalmente, desbordando por la derecha
-    wrapperClass: "absolute top-1/2 -translate-y-1/2 -right-4 pointer-events-none",
   },
   {
     id: 2,
@@ -24,8 +18,6 @@ const categories = [
     alt: "Copa de vino tinto",
     w: 123,
     h: 208,
-    // copa alta y estrecha — centrada verticalmente a la derecha
-    wrapperClass: "absolute top-1/2 -translate-y-1/2 right-4 pointer-events-none",
   },
   {
     id: 3,
@@ -35,8 +27,6 @@ const categories = [
     alt: "Racimo de uvas",
     w: 231,
     h: 175,
-    // uvas anchas y bajas — centradas verticalmente con right
-    wrapperClass: "absolute top-1/2 -translate-y-1/2 right-0 pointer-events-none",
   },
   {
     id: 4,
@@ -46,93 +36,54 @@ const categories = [
     alt: "Bolsa de regalo para vino",
     w: 127,
     h: 226,
-    // bolsa alta y estrecha — igual que la copa
-    wrapperClass: "absolute bottom-2 -right-4 pointer-events-none",
   },
 ];
 
-const containerVariants: Variants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.12 },
-  },
-};
-
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
-};
-
 export default function Categories() {
   return (
-    <section className="py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <div className="max-w-7xl mx-auto mb-10">
-        <Heading level={2} className="text-tertiary uppercase tracking-widest text-sm font-semibold mb-3">
-          Explora Nuestra
-        </Heading>
-        <Heading level={1} className="text-primary uppercase mb-4 leading-tight">
-          Selección Premium
-        </Heading>
-        <p className="text-primary/60 text-lg max-w-xl">
-          Descubre cada categoría y encuentra el vino perfecto para cada ocasión.
-        </p>
-      </div>
+    <section id="categories" aria-labelledby="categories-title" className="scroll-mt-28 py-16 lg:py-24">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <header className="mb-10">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-tertiary sm:text-sm">
+            Explora Nuestra
+          </p>
+          <h2 id="categories-title" className="text-[clamp(2rem,3.5vw,3rem)] leading-[1.15] font-semibold uppercase text-primary">
+            Selección Premium
+          </h2>
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-primary/80 sm:text-lg">
+            Descubre cada categoría y encuentra el vino perfecto para cada ocasión.
+          </p>
+        </header>
 
-      <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        {categories.map((cat) => (
-          <motion.article
-            key={cat.id}
-            variants={cardVariants}
-            whileHover="hover"
-            className="relative bg-[#F5EBDA] rounded-2xl overflow-hidden min-h-65 p-6 flex items-center cursor-pointer"
-          >
-            {/* IMAGE */}
-            <motion.div
-              className={cat.wrapperClass}
-              variants={{
-                hover: {
-                  x: -12,
-                  transition: {
-                    type: "spring",
-                    stiffness: 260,
-                    damping: 20,
-                  },
-                },
-              }}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {categories.map((cat) => (
+            <article
+              key={cat.id}
+              className="flex min-w-0 flex-col bg-[#F5EBDA] p-6"
             >
-              <Image
-                src={cat.src}
-                alt={cat.alt}
-                width={cat.w}
-                height={cat.h}
-                className="drop-shadow-2xl"
-              />
-            </motion.div>
+              <div className="flex h-56 items-center justify-center">
+                <Image
+                  src={cat.src}
+                  alt={cat.alt}
+                  width={cat.w}
+                  height={cat.h}
+                  sizes="(max-width: 639px) min(258px, calc(100vw - 88px)), (max-width: 1023px) min(258px, calc((100vw - 184px) / 2)), (max-width: 1279px) calc((100vw - 328px) / 4), 238px"
+                  className="h-auto max-h-full w-auto max-w-full object-contain"
+                />
+              </div>
 
-            {/* TEXT */}
-            <div className="relative z-10">
-              <span className="text-secondary text-xs uppercase tracking-[0.2em]">
-                {cat.label}
-              </span>
-              <h3 className="text-primary text-xl font-semibold mt-1">
-                {cat.name}
-              </h3>
-            </div>
-
-
-          </motion.article>
-        ))}
-      </motion.div>
+              <div className="mt-6 border-t border-secondary pt-5">
+                <p className="text-xs uppercase tracking-[0.16em] text-tertiary">
+                  {cat.label}
+                </p>
+                <h3 className="mt-2 text-2xl leading-snug font-semibold text-primary">
+                  {cat.name}
+                </h3>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

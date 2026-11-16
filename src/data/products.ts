@@ -13,7 +13,7 @@ export const products: Product[] = [
     description:
       "Blanco fresco con notas de manzana, pera y vainilla.",
     image: "/images/carousel/luctuson-chardonnay.png",
-    price: 24.99,
+    price: 24990,
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ export const products: Product[] = [
     description:
       "Tinto intenso con grosella, cedro y especias suaves.",
     image: "/images/carousel/new-carbernet-sauvignon.png",
-    price: 34.99,
+    price: 34990,
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ export const products: Product[] = [
     description:
       "Cognac elegante con caramelo, ciruela seca y toque ahumado.",
     image: "/images/carousel/belasco-llama-cognac.png",
-    price: 59.99,
+    price: 59990,
   },
   {
     id: 4,
@@ -37,6 +37,6 @@ export const products: Product[] = [
     description:
       "Blanco vibrante con cítricos, melocotón y un toque mineral.",
     image: "/images/carousel/lujuria-chardonnay.png",
-    price: 29.99,
+    price: 29990,
   }
 ];

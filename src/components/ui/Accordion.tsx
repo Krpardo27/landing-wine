@@ -1,6 +1,3 @@
-import { useState } from "react";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
-
 const items = [
   {
     title: "El Origen de Nuestras Bebidas",
@@ -30,40 +27,32 @@ const items = [
 ];
 
 export default function Accordion() {
-  const [openIndex, setOpenIndex] = useState<number>(0);
-
-  const toggle = (idx: number) => {
-    setOpenIndex(openIndex === idx ? -1 : idx);
-  };
-
   return (
-    <div className="w-full max-w-full border border-primary overflow-hidden shadow box-border">
+    <div className="w-full min-w-0 border-y border-secondary">
       {items.map((item, idx) => (
-        <div key={idx} className="border-b border-primary last:border-b-0">
-          <button
-            className="w-full text-left py-4 px-5 font-semibold text-primary focus:outline-none flex justify-between items-center transition-colors gap-4"
-            onClick={() => toggle(idx)}
+        <details
+          key={item.title}
+          name="wine-about"
+          open={idx === 0}
+          className="group border-b border-secondary last:border-b-0"
+        >
+          <summary
+            className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-5 text-left text-primary hover:bg-primary/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary [&::-webkit-details-marker]:hidden"
           >
-            {/* El texto debe poder envolverse (wrap) si es muy largo */}
-            <span className="flex-1 text-sm sm:text-base leading-tight break-words">
+            <span className="min-w-0 flex-1 text-sm leading-relaxed font-semibold wrap-break-word sm:text-base">
               {item.title}
             </span>
 
-            {/* El icono no debe encogerse (flex-shrink-0) */}
-            <span className="flex-shrink-0 text-xs sm:text-lg border border-primary rounded-full p-1 sm:p-2">
-              {openIndex === idx ? <FaChevronUp /> : <FaChevronDown />}
+            <span aria-hidden="true" className="relative size-4 shrink-0 text-tertiary">
+              <span className="absolute top-1/2 left-0 h-px w-full bg-current" />
+              <span className="absolute top-0 left-1/2 h-full w-px bg-current group-open:hidden" />
             </span>
-          </button>
+          </summary>
 
-          {openIndex === idx && (
-            <div
-              id={`accordion-content-${idx}`}
-              className="px-5 pb-5 text-tertiary animate-fadeIn text-sm sm:text-base break-words"
-            >
-              {item.content}
-            </div>
-          )}
-        </div>
+          <p className="pb-5 pr-8 text-sm leading-relaxed wrap-break-word text-primary/80 sm:text-base">
+            {item.content}
+          </p>
+        </details>
       ))}
     </div>
   );

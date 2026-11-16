@@ -1,11 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FFFBF4;
+  color-scheme: light;
+  --background: #fffbf4;
+  --foreground: #482817;
   --primary: #482817;
   --secondary: #d1b991;
-  --tertiary: #af6900;
-  --subtitle: #BB6500;
+  --tertiary: #8b5000;
 }
 
 @theme inline {
@@ -14,24 +15,22 @@
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-tertiary: var(--tertiary);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-libre-baskerville: var(--font-libre-baskerville);
+  --font-sans: Arial, Helvetica, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #FFFBF4;
-    --foreground: #ededed;
-  }
-}
+html { scroll-behavior: smooth; }
+:where(section[id], main[id], footer[id]) { scroll-margin-top: 7rem; }
+body { margin: 0; background: var(--background); color: var(--foreground); font-family: var(--font-libre-baskerville), Georgia, serif; }
+button, summary { cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+a, button, summary { -webkit-tap-highlight-color: transparent; }
+a:hover { text-decoration-thickness: 1px; text-underline-offset: 0.25em; }
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 5px; }
+::selection { background: var(--primary); color: var(--background); }
+.skip-link { position: fixed; top: 1rem; left: 1rem; z-index: 100; transform: translateY(-200%); padding: 1rem; background: var(--primary); color: white; }
+.skip-link:focus { transform: translateY(0); }
 
-body {
-  color: var(--foreground);
-  font-family: var(--font-libre-baskerville), serif;
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
-
-html {
-  scroll-behavior: smooth;
-}
-

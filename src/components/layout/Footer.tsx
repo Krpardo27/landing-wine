@@ -1,133 +1,75 @@
-import Heading from "../ui/typography/Heading";
 import Image from "next/image";
-import { FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#F5EBDA] text-white py-16 relative overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/bg-footer.png"
-          alt="Fondo decorativo de viñedo"
-          fill
-          priority
-          className="object-contain object-bottom "
-        />
-      </div>
-      <div className="px-6 container mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* Column 1: Logo */}
-          <div className="flex items-center w-fit gap-5">
+    <footer
+      id="contacto"
+      className="relative isolate overflow-hidden bg-[#F5EBDA] py-16 text-primary"
+    >
+      <Image
+        src="/images/bg-footer.png"
+        alt=""
+        fill
+        sizes="100vw"
+        className="pointer-events-none -z-10 object-contain object-bottom opacity-30"
+      />
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <a
+            href="#home"
+            className="flex items-start gap-3 self-start"
+            aria-label="Vin Rouge, volver al inicio"
+          >
             <Image
               src="/images/logo-brown.svg"
-              alt="Logo"
-              width={70}
-              height={80}
-              className="text-primary"
+              alt=""
+              width={48}
+              height={56}
+              className="h-14 w-12 object-contain"
             />
-            <Heading level={1} className="uppercase text-primary lg:text-2xl">
-              Vin Rouge
-            </Heading>
+            <span className="pt-3 text-lg font-bold uppercase">Vin Rouge</span>
+          </a>
+          <div>
+            <h2 className="mb-4 text-base font-bold uppercase">Contacto</h2>
+            <p className="text-sm leading-7">
+              Los datos de contacto y las redes oficiales están pendientes de confirmación.
+            </p>
           </div>
-
-          {/* Column 2: Contact Us */}
-          <div className="flex flex-col w-max">
-            <h4 className="text-lg font-semibold mb-4 border-primary border-b-2 text-primary uppercase">
-              Contacto
-            </h4>
-            <div className="space-y-3 text-stone-400 text-sm">
-              <p className="text-[#9E845C] flex items-center gap-2">
-                <FaMapMarkerAlt className="text-[#BB6500]" />
-                123 Calle del Vino
-              </p>
-              <p className="text-[#9E845C] flex items-center gap-2">
-                <FaMapMarkerAlt className="text-[#BB6500]" />
-                Valle del Vino, Chile
-              </p>
-              <p className="text-[#9E845C] flex items-center gap-2">
-                <FaPhone className="text-[#BB6500]" />
-                Tel: +52 123 456 7890
-              </p>
-              <p className="text-[#9E845C] flex items-center gap-2">
-                <FaEnvelope className="text-[#BB6500]" />
-                info@viñedos.com
-              </p>
-            </div>
-          </div>
-
-          {/* Column 3: About Us */}
-          <div className="flex flex-col w-max">
-            <h4 className="text-lg font-semibold mb-4 border-primary border-b-2 text-primary uppercase">
-              Nosotros
-            </h4>
-            <ul className="space-y-3 text-stone-400 text-sm">
+          <div>
+            <h2 className="mb-4 text-base font-bold uppercase">Nosotros</h2>
+            <ul className="space-y-3 text-sm">
               <li>
-                <a
-                  href="#"
-                  className="text-[#9E845C] hover:text-primary transition-colors"
-                >
-                  Nuestra Historia
-                </a>
+                <a href="#historia">Nuestra historia</a>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-[#9E845C] hover:text-primary transition-colors"
-                >
-                  Viñedos
-                </a>
+                <a href="#conocenos">Viñedos y proceso</a>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-[#9E845C] hover:text-primary transition-colors"
-                >
-                  Proceso
-                </a>
+                <a href="#socios">Equipo</a>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="text-[#9E845C] hover:text-primary transition-colors"
-                >
-                  Equipo
-                </a>
+                <a href="#gallery">Galería</a>
               </li>
             </ul>
           </div>
-
-          {/* Column 4: Latest News */}
-          <div className="flex flex-col w-max">
-            <h4 className="text-lg font-semibold mb-4 border-primary border-b-2 text-primary uppercase">
-              Novedades
-            </h4>
-            <p className="text-[#BB6500] text-sm mb-2">Mantente al día</p>
-            <div className="space-y-3">
-              <div>
-                <span className="text-[#BB6500] text-xs">15 Abr 2026</span>
-                <p className="text-[#9E845C] text-sm hover:text-primary transition-colors cursor-pointer">
-                  Nueva cosecha disponible
-                </p>
-              </div>
-              <div>
-                <span className="text-[#BB6500] text-xs">02 Abr 2026</span>
-                <p className="text-[#9E845C] text-sm hover:text-primary transition-colors cursor-pointer">
-                  Evento de degustación
-                </p>
-              </div>
-              <div>
-                <span className="text-[#BB6500] text-xs">20 Mar 2026</span>
-                <p className="text-[#9E845C] text-sm hover:text-primary transition-colors cursor-pointer">
-                  Festival del Vino 2026
-                </p>
-              </div>
-            </div>
+          <div>
+            <h2 className="mb-4 text-base font-bold uppercase">Novedades</h2>
+            <ul className="space-y-3 text-sm">
+              <li>
+                <a href="#shop">Nuestra selección de vinos</a>
+              </li>
+              <li>
+                <a href="#events">Archivo de eventos</a>
+              </li>
+              <li>
+                <a href="#novedades">Mantente al día</a>
+              </li>
+            </ul>
           </div>
         </div>
-
-        {/* Bottom bar */}
-        <div className="border-t border-[#9E845C] mt-12 pt-8 text-center text-[#9E845C] text-sm">
-          <p>© 2026 Viñedos. Todos los derechos reservados.</p>
+        <div className="mt-12 flex flex-wrap justify-between gap-4 border-t border-primary/25 pt-6 text-xs leading-relaxed">
+          <p>© {new Date().getFullYear()} Vin Rouge. Todos los derechos reservados.</p>
+          <p>Disfruta del vino de forma responsable.</p>
         </div>
       </div>
     </footer>

@@ -1,0 +1,21 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "QA: producción local",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"start",
+				"--",
+				"--hostname",
+				"127.0.0.1",
+				"--port",
+				"3100"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		}
+	]
+}
