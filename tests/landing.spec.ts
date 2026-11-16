@@ -190,12 +190,22 @@ test("SEO, imágenes, cabeceras y rutas", async ({ page, request }) => {
   await expect(page).toHaveTitle(/Vin Rouge/);
   await expect(page.locator("html")).toHaveAttribute("lang", "es");
   await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /Vin Rouge/);
+  const sitemapResponse = await request.get("/sitemap.xml");
+  const sitemap = await sitemapResponse.text();
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
+    "content",
+    process.env.SITE_NOINDEX === "true" ? "noindex, follow" : "index, follow",
+  );
+  if (process.env.SITE_NOINDEX === "true") expect(sitemap).not.toContain("<loc>");
   for (const image of await page.locator("img").all()) {
     await image.scrollIntoViewIfNeeded();
     await expect.poll(() => image.evaluate(el => el instanceof HTMLImageElement && el.complete && el.naturalWidth > 0)).toBe(true);
   }
-  expect((await request.get("/robots.txt")).status()).toBe(200);
-  expect((await request.get("/sitemap.xml")).status()).toBe(200);
+  const robots = await request.get("/robots.txt");
+  expect(robots.status()).toBe(200);
+  expect(await robots.text()).toContain("Allow: /");
+  expect(await robots.text()).not.toContain("Disallow: /");
+  expect(sitemapResponse.status()).toBe(200);
   const og = await request.get("/opengraph-image");
   expect(og.status()).toBe(200);
   expect(og.headers()["content-type"]).toContain("image/png");

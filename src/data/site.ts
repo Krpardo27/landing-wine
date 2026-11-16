@@ -14,4 +14,5 @@ export const site = {
   title: "Vin Rouge | Vinos, tradición y experiencias de viñedo",
   description: "Descubre la selección de vinos de Vin Rouge, la historia detrás de cada botella y los momentos que celebran la tradición vinícola.",
   url: getSiteUrl(),
+  indexable: process.env.SITE_NOINDEX !== "true",
 };

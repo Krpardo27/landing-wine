@@ -20,7 +20,9 @@ La tarea de VS Code «QA: producción local» sirve el build en http://127.0.0.1
 
 Consultar [.env.example](.env.example). Definir `SITE_URL` con el **origen HTTPS oficial** antes de compilar. No admite rutas, credenciales, parámetros ni fragmentos.
 
-Sin origen confirmado se mantienen `noindex`, bloqueo de rastreo y sitemap vacío, deliberadamente. Next.js puede advertir que resuelve la imagen social automática contra localhost en esa situación: **no publicar así**. Con `SITE_URL`, el build genera canonical, URLs sociales absolutas, sitemap, robots indexable y JSON-LD `WebSite`. Volver a compilar cuando cambie el origen.
+La página permite indexación y rastreo por defecto, incluso si falta `SITE_URL`. Sin origen confirmado el sitemap queda vacío y Next.js puede advertir que resuelve la imagen social automática contra localhost: configurar el dominio antes de publicar. Con `SITE_URL`, el build genera canonical, URLs sociales absolutas, sitemap y JSON-LD `WebSite`.
+
+Para previews que deban quedar fuera de los buscadores, definir `SITE_NOINDEX=true` antes de compilar: genera `noindex, follow` y omite las entradas del sitemap. El rastreo permanece permitido para que los buscadores puedan leer `noindex`; no es un control de acceso. En producción, dejar la variable sin definir o en `false`. Volver a compilar y desplegar cuando cambie cualquiera de estas variables.
 
 No existen proveedor de newsletter, endpoint de contacto, pagos ni reservas. La interfaz no simula envíos ni compras. Antes del lanzamiento, confirmar contacto, perfiles oficiales, moneda, historia, equipo, uso de logos y calendario. El informe detalla los datos originales pendientes.
 

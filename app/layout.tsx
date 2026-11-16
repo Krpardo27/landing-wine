@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: site.title,
   description: site.description,
   ...(site.url && { metadataBase: new URL(site.url), alternates: { canonical: "/" } }),
-  robots: { index: Boolean(site.url), follow: true },
+  robots: { index: site.indexable, follow: true },
   openGraph: {
     type: "website",
     locale: "es_CL",
