@@ -1,225 +1,58 @@
-"use client";
-
-import { type Variants, motion } from "framer-motion";
 import Image from "next/image";
-import Heading from "../../ui/typography/Heading";
-import { FaCalendarAlt, FaClock, FaMapMarkerAlt } from "react-icons/fa";
-
-const containerVariants: Variants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, x: -40 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
-};
-
-const imageVariants: Variants = {
-  hidden: { opacity: 0, x: 40, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    scale: 1,
-    transition: { duration: 0.8, ease: "easeOut", delay: 0.3 },
-  },
-};
-
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
-  hover: {
-    y: -8,
-    scale: 1.02,
-    transition: { type: "spring", stiffness: 300, damping: 20 },
-  },
-};
 
 const events = [
-  {
-    id: 1,
-    title: "Tour Viñedo Premium",
-    date: "12 Junio 2026",
-    time: "10:00 - 13:00",
-    location: "Valle del Maipo",
-    image: "/images/events/event-1.png",
-    bgImage: "/images/events/hero-event-1.png",
-  },
-  {
-    id: 2,
-    title: "Cata de Vinos Exclusivos",
-    date: "18 Junio 2026",
-    time: "19:00 - 22:00",
-    location: "Santiago Centro",
-    image: "/images/events/event-2.png",
-    bgImage: "/images/events/hero-event-2.png",
-  },
-  {
-    id: 3,
-    title: "Experiencia Vendimia",
-    date: "25 Junio 2026",
-    time: "09:00 - 14:00",
-    location: "Valle de Colchagua",
-    image: "/images/events/event-3.png",
-    bgImage: "/images/events/hero-event-3.png",
-  },
+  { id: 1, title: "Tour Viñedo Premium", date: "12 Junio 2026", dateTime: "2026-06-12", time: "10:00 - 13:00", location: "Valle del Maipo", image: "/images/events/event-1.png", bgImage: "/images/events/hero-event-1.png" },
+  { id: 2, title: "Cata de Vinos Exclusivos", date: "18 Junio 2026", dateTime: "2026-06-18", time: "19:00 - 22:00", location: "Santiago Centro", image: "/images/events/event-2.png", bgImage: "/images/events/hero-event-2.png" },
+  { id: 3, title: "Experiencia Vendimia", date: "25 Junio 2026", dateTime: "2026-06-25", time: "09:00 - 14:00", location: "Valle de Colchagua", image: "/images/events/event-3.png", bgImage: "/images/events/hero-event-3.png" },
 ];
 
 export default function Events() {
   return (
-    <section className="py-16 lg:py-18 bg-[#F5EBDA]/30 overflow-x-hidden">
-      <motion.div
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={containerVariants}
-      >
-        {/* Header */}
-        <motion.div className="text-center mb-12" variants={itemVariants}>
-          <Heading
-            level={2}
-            className="text-secondary uppercase tracking-widest mb-3 text-sm sm:text-base"
-          >
-            Exclusivos
-          </Heading>
-          <Heading
-            level={1}
-            className="text-primary uppercase text-3xl sm:text-4xl lg:text-5xl"
-          >
-            Conoce nuestros eventos
-          </Heading>
-          <motion.div
-            className="w-20 h-1 bg-primary mx-auto mt-4"
-            initial={{ width: 0 }}
-            whileInView={{ width: 80 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          />
-        </motion.div>
-
-        {/* Grid cols-2 */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-w-0">
-          {/* LEFT - Lista de eventos */}
-          <motion.div variants={itemVariants} className="flex flex-col gap-5">
-            {events.map((event, index) => (
-              <motion.div
-                key={event.id}
-                variants={cardVariants}
-                whileHover="hover"
-                className="flex h-[140px] w-full min-w-0 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow"
-              >
-                <div className="relative flex-1 min-w-0 bg-tertiary/10 overflow-hidden">
-                  <Image
-                    src={event.image}
-                    alt={event.title}
-                    fill
-                    sizes="160px"
-                    className="object-cover"
-                  />
+    <section id="events" aria-labelledby="events-title" className="scroll-mt-28 bg-[#F5EBDA]/30 py-16 lg:py-24">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <header className="mb-10 text-center">
+          <p className="mb-3 text-sm tracking-widest text-[#8A5200] uppercase">Exclusivos · Archivo junio 2026</p>
+          <h2 id="events-title" className="text-3xl leading-tight text-primary uppercase sm:text-4xl lg:text-5xl">Conoce nuestros eventos</h2>
+          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-primary">
+            Estos eventos corresponden a junio de 2026 y ya finalizaron. Esta sección es un archivo; no hay reservas disponibles.
+          </p>
+        </header>
+        <div className="grid min-w-0 items-start gap-8 lg:grid-cols-2 lg:gap-12">
+          <div className="flex min-w-0 flex-col gap-6">
+            {events.map((event) => (
+              <article key={event.id} className="grid min-w-0 rounded-xl border border-primary/15 bg-[#F5EBDA] sm:grid-cols-[1fr_2fr] lg:grid-cols-1 xl:grid-cols-[1fr_2fr]">
+                <div className="relative aspect-4/3 min-w-0 sm:aspect-auto lg:aspect-4/3 xl:aspect-auto">
+                  <Image src={event.image} alt={event.title} fill sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1024px) 30vw, (max-width: 1280px) 44vw, 187px" className="rounded-t-xl object-cover sm:rounded-none sm:rounded-l-xl lg:rounded-l-none lg:rounded-t-xl xl:rounded-t-none xl:rounded-l-xl" />
                 </div>
-
-                <div className="relative flex-1 bg-tertiary/10">
-                  <Image
-                    src={event.bgImage}
-                    alt={event.title}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover"
-                  />
-
-                  <div className="absolute inset-0 p-4 flex flex-col justify-center">
-                    <h3 className="truncate text-primary font-semibold uppercase text-sm tracking-wide mb-2">
-                      {event.title}
-                    </h3>
-
-                    <div className="flex flex-wrap gap-3 text-xs text-primary max-w-full">
-                      <span className="flex items-center gap-1">
-                        <FaCalendarAlt className="text-secondary text-[10px]" />
-                        {event.date}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <FaClock className="text-secondary text-[10px]" />
-                        {event.time}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <FaMapMarkerAlt className="text-secondary text-[10px]" />
-                        {event.location}
-                      </span>
-                      <button className="cursor-pointer absolute bottom-3 left-3 bg-primary py-1 px-2 text-xs uppercase tracking-wide opacity-90 hover:opacity-100 transition-opacity">
-                        <span className="text-tertiary py-3 px-2 text-xs uppercase tracking-wide  rounded-md">
-                          Ver detalles
-                        </span>
-                      </button>
-                    </div>
-                  </div>
+                <div className="relative isolate min-w-0 p-5 sm:p-6">
+                  <Image src={event.bgImage} alt="" fill sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1024px) 60vw, (max-width: 1280px) 44vw, 375px" className="-z-20 rounded-xl object-cover" />
+                  <div aria-hidden="true" className="absolute inset-0 -z-10 rounded-xl bg-[#F5EBDA]/95" />
+                  <h3 className="mb-3 wrap-break-word text-base font-semibold tracking-wide text-primary uppercase">{event.title}</h3>
+                  <p className="text-sm leading-relaxed text-primary"><time dateTime={event.dateTime}>{event.date}</time></p>
+                  <details className="mt-3 text-sm text-primary">
+                    <summary className="min-h-11 cursor-pointer py-3 leading-relaxed underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                      Ver detalles<span className="sr-only"> de {event.title}</span>
+                    </summary>
+                    <dl className="space-y-3 pt-2 leading-relaxed">
+                      <div><dt className="font-semibold">Horario</dt><dd>{event.time}</dd></div>
+                      <div><dt className="font-semibold">Lugar</dt><dd>{event.location}</dd></div>
+                    </dl>
+                  </details>
                 </div>
-              </motion.div>
+              </article>
             ))}
-          </motion.div>
-
-          {/* RIGHT - Hero imagen */}
-          <motion.div
-            variants={imageVariants}
-            className="relative w-full h-[400px] min-w-0 lg:h-[500px] rounded-2xl overflow-hidden shadow-xl"
-          >
-            <Image
-              src="/images/events/hero-events.png"
-              alt="Eventos"
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
-            />
-
-            {/* overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-
-            {/* texto */}
-            <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5, duration: 0.6 }}
-                className="text-2xl lg:text-3xl font-bold uppercase"
-              >
-                Vive la experiencia
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.7, duration: 0.6 }}
-                className="text-sm opacity-90 mt-2"
-              >
-                Eventos únicos en los mejores viñedos de Chile
-              </motion.p>
+          </div>
+          <figure className="min-w-0">
+            <div className="relative aspect-4/3 w-full lg:aspect-square">
+              <Image src="/images/events/hero-events.png" alt="Experiencias en los viñedos de Chile" fill sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1024px) calc(100vw - 64px), (max-width: 1280px) calc((100vw - 112px) / 2), 584px" className="rounded-xl object-cover" />
             </div>
-
-            {/* Elemento decorativo */}
-            <motion.div
-              className="absolute top-4 right-4 w-16 h-16 border-4 border-white/30 rounded-xl"
-              initial={{ scale: 0, rotate: 15 }}
-              whileInView={{ scale: 1, rotate: 15 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.8, duration: 0.5 }}
-            />
-          </motion.div>
+            <figcaption className="mt-5 text-primary">
+              <p className="text-2xl leading-tight uppercase">Vive la experiencia</p>
+              <p className="mt-3 text-sm leading-relaxed">Eventos únicos en los mejores viñedos de Chile</p>
+            </figcaption>
+          </figure>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

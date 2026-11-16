@@ -1,19 +1,14 @@
-const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Shop", href: "#shop" },
-  { label: "Socios", href: "#socios" },
-  { label: "Events", href: "#events" },
-];
+import { navLinks } from "@/src/data/navigation";
 
 export default function Navbar() {
   return (
-    <nav aria-label="Main navigation">
-      <ul className="hidden lg:flex items-center gap-6 lg:gap-10">
+    <nav aria-label="Navegación principal" className="hidden lg:block">
+      <ul className="flex items-center gap-6">
         {navLinks.map((link) => (
-          <li key={link.label}>
+          <li key={link.href}>
             <a
               href={link.href}
-              className="text-primary uppercase tracking-[0.12em] text-sm lg:text-base transition-opacity hover:opacity-70"
+              className="inline-flex min-h-11 items-center text-xs uppercase tracking-wider text-primary hover:underline hover:underline-offset-8"
             >
               {link.label}
             </a>

@@ -1,54 +1,58 @@
 import Image from "next/image";
-import Heading from "../../ui/typography/Heading";
+import { FiArrowUpRight } from "react-icons/fi";
 
 export default function OurHistory() {
   return (
-    <section className="relative lg:py-16 py-8 w-full flex items-center justify-center overflow-hidden">
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 justify-center items-center gap-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col justify-between gap-5 p-4 sm:p-6 lg:p-8">
-          <span className="text-secondary text-sm sm:text-base lg:text-lg tracking-[0.18em] uppercase">
+    <section id="historia" aria-labelledby="history-title" className="w-full scroll-mt-28 py-16 lg:py-24">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-5 sm:px-8 lg:grid-cols-2 lg:gap-16">
+        <div className="min-w-0">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-tertiary sm:text-sm">
             NUESTRA HISTORIA
-          </span>
-          <Heading
-            level={1}
-            className="text-primary uppercase my-2 sm:my-3 lg:my-4 text-4xl sm:text-5xl lg:text-6xl leading-[0.95]"
+          </p>
+          <h2
+            id="history-title"
+            className="max-w-[20ch] text-[clamp(2rem,3.5vw,3rem)] leading-[1.15] font-semibold uppercase text-primary"
           >
-            Desde nuestros viñedos <br />
-            hasta tu copa
-          </Heading>
-          <p className="text-primary text-base sm:text-lg lg:text-xl leading-relaxed max-w-[38ch] mb-4 sm:mb-5 lg:mb-6">
+            Desde nuestros viñedos hasta tu copa
+          </h2>
+          <p className="mt-6 max-w-[42ch] text-base leading-relaxed text-primary/80 sm:text-lg">
             Conoce la historia detrás de cada botella, desde la tradición
             vinícola hasta la innovación en cada cosecha.
           </p>
-          <button
-            type="button"
-            className="border border-t-primary border-l-0 border-r-0 cursor-pointer border-b-primary w-fit px-4 py-3 sm:px-5 sm:py-3.5 text-primary text-sm sm:text-base tracking-wide uppercase"
+          <a
+            href="#conocenos"
+            className="mt-8 inline-flex min-h-11 items-center gap-3 border-y border-primary px-1 py-3 text-sm leading-relaxed tracking-wide uppercase text-primary hover:bg-primary/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
           >
             Descubre nuestra historia
-          </button>
+            <FiArrowUpRight size={20} className="shrink-0" aria-hidden="true" focusable="false" />
+          </a>
         </div>
-        <div className="relative w-fit mx-auto p-4">
+        <figure className="mx-auto w-full max-w-150">
+          <p className="mb-3 text-right text-2xl font-bold italic tracking-wide text-tertiary sm:text-3xl">
+            1945
+          </p>
           <Image
             src="/images/history/hero-history.jpg"
             alt="Imagen de nuestra historia"
-            width={600}
-            height={600}
-            className="relative z-10 w-full max-w-[480px] sm:max-w-[540px] lg:max-w-[600px] h-auto"
+            width={627}
+            height={419}
+            sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 1023px) min(600px, calc(100vw - 64px)), (max-width: 1279px) calc((100vw - 128px) / 2), 576px"
+            className="h-auto w-full"
           />
-          <span className="absolute text-xl sm:text-3xl lg:text-4xl top-0 right-4 text-secondary tracking-[0.18em] font-bold italic z-20">
-            1945
-          </span>
-          <p className="text-secondary italic text-right py-2">
-            El arte de cultivar y celebrar cada cosecha
-          </p>
-          <Image
-            src="/images/logo.svg"
-            alt="Logo"
-            width={150}
-            height={150}
-            className="absolute -bottom-10 left-0 sm:-bottom-16 sm:-left-10 lg:-bottom-14 lg:-left-12 z-20 w-[80px] sm:w-[110px] lg:w-[150px] h-auto"
-          />
-        </div>
+          <figcaption className="mt-4 flex items-center gap-5">
+            <Image
+              src="/images/logo.svg"
+              alt=""
+              width={150}
+              height={150}
+              sizes="(max-width: 639px) 64px, 80px"
+              className="h-auto w-16 shrink-0 sm:w-20"
+            />
+            <p className="ml-auto max-w-[30ch] text-right text-sm leading-relaxed italic text-primary/80">
+              El arte de cultivar y celebrar cada cosecha
+            </p>
+          </figcaption>
+        </figure>
       </div>
     </section>
   );

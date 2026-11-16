@@ -1,145 +1,85 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
-import Heading from "../../ui/typography/Heading";
+import { FiArrowUpRight } from "react-icons/fi";
 
 export default function Hero() {
+  const reduceMotion = useReducedMotion();
+  const easing = [0.22, 1, 0.36, 1] as const;
+
   return (
-    <section className="relative bg-[#F5EBDA] w-full min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 bottom-0 z-0 size-full">
+    <section
+      id="home"
+      aria-labelledby="hero-title"
+      className="relative isolate w-full scroll-mt-28 overflow-hidden bg-[#F5EBDA] py-16 lg:py-24"
+    >
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 aspect-1468/504">
         <Image
           src="/images/hero/hero-bg.png"
-          alt="Fondo decorativo de viñedo"
+          alt=""
           fill
-          priority
           loading="eager"
+          quality={60}
           sizes="100vw"
-          className="object-cover object-bottom"
+          className="object-contain object-bottom"
         />
       </div>
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 justify-center items-center gap-10 max-w-7xl mx-auto">
-        {/* Text */}
-        <motion.div
-          className="flex flex-col justify-between gap-5 p-4 sm:p-6 lg:p-8 lg:mt-0 mt-28"
-          initial="hidden"
-          animate="visible"
-          variants={{
-            hidden: {},
-            visible: {
-              transition: { staggerChildren: 0.15, delayChildren: 0.2 },
-            },
-          }}
-        >
-          <motion.span
-            className="text-secondary text-sm sm:text-base lg:text-lg tracking-[0.18em] uppercase"
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.6, ease: "easeOut" },
-              },
-            }}
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-5 sm:px-8 lg:grid-cols-2 lg:gap-16">
+        <div className="min-w-0">
+          <motion.p
+            initial={reduceMotion ? false : { y: 18 }}
+            animate={{ y: 0 }}
+            transition={{ duration: reduceMotion ? 0 : 0.6, ease: easing }}
+            className="hero-eyebrow-entrance mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-tertiary sm:text-sm"
           >
             TRADICIÓN VINÍCOLA
-          </motion.span>
-          <motion.div
-            variants={{
-              hidden: { opacity: 0, y: 30 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.7, ease: "easeOut" },
-              },
-            }}
+          </motion.p>
+          <motion.h1
+            id="hero-title"
+            initial={reduceMotion ? false : { y: 18 }}
+            animate={{ y: 0 }}
+            transition={{ duration: reduceMotion ? 0 : 0.7, delay: reduceMotion ? 0 : 0.08, ease: easing }}
+            className="hero-title-entrance max-w-[15ch] text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.08] font-semibold uppercase text-primary"
           >
-            <Heading
-              level={1}
-              className="text-primary uppercase my-2 sm:my-3 lg:my-4 text-4xl sm:text-5xl lg:text-6xl leading-[0.95]"
-            >
-              Viñedos de todo <br />
-              el mundo
-            </Heading>
-          </motion.div>
-          <motion.p
-            className="text-primary text-base sm:text-lg lg:text-xl leading-relaxed max-w-[38ch] mb-4 sm:mb-5 lg:mb-6"
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.6, ease: "easeOut" },
-              },
-            }}
-          >
+            Viñedos de todo el mundo
+          </motion.h1>
+          <p className="mt-6 max-w-[38ch] text-base leading-relaxed text-primary sm:text-lg">
             Descubre vinos de origen selecto, con aromas profundos y sabores que
             celebran cada cosecha.
-          </motion.p>
-          <motion.button
-            type="button"
-            className="border border-t-primary border-l-0 border-r-0 cursor-pointer border-b-primary w-fit px-4 py-3 sm:px-5 sm:py-3.5 text-primary text-sm sm:text-base tracking-wide uppercase"
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.6, ease: "easeOut" },
-              },
-            }}
-            whileHover={{
-              x: 6,
-              transition: { type: "spring", stiffness: 300, damping: 20 },
-            }}
-            whileTap={{ scale: 0.97 }}
+          </p>
+          <a
+            href="#conocenos"
+            className="mt-8 inline-flex min-h-11 items-center gap-3 border-y border-primary px-1 py-3 text-sm leading-relaxed tracking-wide uppercase text-primary hover:bg-primary/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
           >
             Descubre cómo se elabora
-          </motion.button>
-        </motion.div>
-
-        {/* Image */}
-        <div className="relative w-fit mx-auto">
-          {/* Circle pulse */}
+            <FiArrowUpRight size={20} className="shrink-0" aria-hidden="true" focusable="false" />
+          </a>
+        </div>
+        <div className="relative mx-auto w-full max-w-80 lg:max-w-110">
           <motion.div
-            className="bg-secondary rounded-full absolute inset-0 m-auto w-75 h-75 lg:w-87.5 lg:h-87.5 z-0"
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+            aria-hidden="true"
+            initial={reduceMotion ? false : { scale: 0.9 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: reduceMotion ? 0 : 0.65, ease: easing }}
+            className="hero-circle-entrance absolute inset-0 m-auto aspect-square w-4/5 rounded-full bg-secondary"
           />
-          {/* Subtle continuous pulse ring */}
           <motion.div
-            className="rounded-full absolute inset-0 m-auto w-75 h-75 lg:w-87.5 lg:h-87.5 z-0 border border-secondary/40"
-            initial={{ scale: 1, opacity: 0 }}
-            animate={{ scale: [1, 1.12, 1], opacity: [0, 0.5, 0] }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 1.2,
-            }}
-          />
-          {/* Bottle */}
-          <motion.div
-            className="relative z-10"
-            initial={{ y: 60, rotate: -4 }}
+            initial={reduceMotion ? false : { y: 32, rotate: -3 }}
             animate={{ y: 0, rotate: 0 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
-            whileHover={{
-              y: -12,
-              rotate: 2,
-              transition: { type: "spring", stiffness: 200, damping: 18 },
-            }}
+            transition={{ duration: reduceMotion ? 0 : 0.8, ease: easing }}
+            className="hero-bottle-entrance relative"
           >
             <Image
               src="/images/hero/hero-1.png"
               alt="Imagen principal de vino"
-              width={500}
-              height={500}
-              style={{ height: 'auto' }}
-              priority
+              width={723}
+              height={821}
               fetchPriority="high"
               loading="eager"
-              sizes="(max-width: 768px) 100vw, 500px"
+              quality={60}
+              sizes="(max-width: 359px) calc(100vw - 40px), (max-width: 1023px) 320px, (max-width: 1279px) calc((100vw - 128px) / 2), 440px"
+              className="relative h-auto w-full"
             />
           </motion.div>
         </div>

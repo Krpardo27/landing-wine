@@ -1,162 +1,112 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { RxHamburgerMenu, RxCross2 } from "react-icons/rx";
-import Image from "next/image";
-import Socials from "./Socials";
-
-const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Shop", href: "#shop" },
-  { label: "Events", href: "#events" },
-  { label: "Blog", href: "#blog" },
-];
+import { navLinks } from "@/src/data/navigation";
 
 export default function NavMobile() {
+  const dialog = useRef<HTMLDialogElement>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
+  const destination = useRef<HTMLElement | null>(null);
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+  function close() {
+    dialog.current?.close();
+  }
 
+  useEffect(() => {
+    const media = matchMedia("(min-width: 1024px)");
+    const onResize = () => {
+      if (media.matches) dialog.current?.close();
+    };
+    media.addEventListener("change", onResize);
+    return () => media.removeEventListener("change", onResize);
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = previous;
     };
   }, [open]);
 
   return (
     <>
-      {/* BOTÓN */}
       <button
-        onClick={() => setOpen(true)}
-        className="lg:hidden relative z-50 text-primary cursor-pointer overflow-hidden"
+        ref={trigger}
+        type="button"
+        aria-label="Abrir menú"
+        aria-expanded={open}
+        aria-haspopup="dialog"
+        aria-controls="mobile-menu"
+        onClick={() => {
+          dialog.current?.showModal();
+          setOpen(true);
+        }}
+        className="flex size-11 items-center justify-center text-primary lg:hidden"
       >
-        <RxHamburgerMenu size={26} />
+        <RxHamburgerMenu size={25} aria-hidden="true" focusable="false" />
       </button>
-
-      <AnimatePresence>
-        {open && (
-          <>
-            {/* BACKDROP (FIX REAL) */}
-            <motion.div
-              className="
-                fixed top-0 left-0 w-full h-dvh
-                bg-black/70
-                backdrop-blur-lg
-                z-900 overflow-x-hidden
-              "
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setOpen(false)}
-            />
-
-            {/* PANEL */}
-            <motion.div
-              className="
-                fixed top-0 right-0 h-dvh w-[85%] max-w-sm 
-                bg-[#FFFBF4]
-                z-1000
-                max-h-dvh 
-                overflow-y-auto
-                flex flex-col
-                px-6 pt-2 pb-5
-                shadow-2xl backdrop-blur-2xl
-              "
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ duration: 0.35 }}
-            >
-              {/* HEADER */}
-              <div className="flex items-center justify-between mb-12">
-                <Image
-                  src="/images/logo.svg"
-                  alt="Logo"
-                  width={100}
-                  height={100}
-                  style={{ height: "auto" }}
-                />
-
-                <button
-                  onClick={() => setOpen(false)}
-                  className="text-primary cursor-pointer"
+      <dialog
+        ref={dialog}
+        id="mobile-menu"
+        aria-labelledby="menu-title"
+        onClose={() => {
+          setOpen(false);
+          const target = destination.current;
+          destination.current = null;
+          if (target) {
+            target.tabIndex = -1;
+            target.focus({ preventScroll: true });
+            target.scrollIntoView({ block: "start" });
+          } else trigger.current?.focus({ preventScroll: true });
+        }}
+        onClick={(event) => {
+          if (event.target !== event.currentTarget) return;
+          const bounds = event.currentTarget.getBoundingClientRect();
+          const outside = event.clientX < bounds.left || event.clientX > bounds.right ||
+            event.clientY < bounds.top || event.clientY > bounds.bottom;
+          if (outside) close();
+        }}
+        className="fixed inset-y-0 right-0 left-auto m-0 h-dvh max-h-none w-[min(88vw,24rem)] max-w-none border-l border-primary/15 bg-background p-6 text-primary backdrop:bg-black/60"
+      >
+        <div className="mb-8 flex items-center justify-between gap-4">
+          <p id="menu-title" className="text-lg font-bold uppercase">
+            Vin Rouge
+          </p>
+          <button
+            type="button"
+            aria-label="Cerrar menú"
+            onClick={close}
+            className="flex size-11 items-center justify-center"
+          >
+            <RxCross2 size={25} aria-hidden="true" focusable="false" />
+          </button>
+        </div>
+        <nav aria-label="Navegación móvil">
+          <ul className="space-y-2">
+            {navLinks.map((link) =>
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  onClick={() => {
+                    destination.current = document.getElementById(link.href.slice(1));
+                    close();
+                  }}
+                  className="flex min-h-14 items-center border-b border-primary/15 py-3 text-base uppercase tracking-wider"
                 >
-                  <RxCross2 size={26} />
-                </button>
-              </div>
-
-              {/* LINKS */}
-              <motion.ul
-                className="flex flex-col gap-8"
-                initial="hidden"
-                animate="visible"
-                variants={{
-                  visible: {
-                    transition: { staggerChildren: 0.08 },
-                  },
-                }}
-              >
-                {navLinks.map((link) => (
-                  <motion.li
-                    key={link.label}
-                    variants={{
-                      hidden: { opacity: 0, x: 20 },
-                      visible: { opacity: 1, x: 0 },
-                    }}
-                  >
-                    <motion.a
-                      href={link.href}
-                      onClick={() => setOpen(false)}
-                      whileHover={{ x: 6 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 20,
-                      }}
-                      className="
-    relative inline-block
-    text-primary uppercase tracking-[0.18em]
-    text-lg font-medium
-    transition-colors duration-300
-    hover:text-tertiary
-
-    after:content-['']
-    after:absolute
-    after:left-0
-    after:-bottom-1
-    after:w-0
-    after:h-[1px]
-    after:bg-tertiary
-    after:transition-all
-    after:duration-300
-
-    hover:after:w-full
-  "
-                    >
-                      {link.label}
-                    </motion.a>
-                  </motion.li>
-                ))}
-              </motion.ul>
-
-              {/* FOOTER */}
-              <div className="flex-1 flex flex-col justify-end gap-4">
-                <Socials />
-                <div className="border-t border-secondary/30 pt-4">
-                  <p className="text-base text-center text-secondary tracking-widest uppercase">
-                    © 2026 Winery
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+                  {link.label}
+                </a>
+              </li>
+            )}
+          </ul>
+        </nav>
+        <p className="mt-10 text-sm leading-relaxed">
+          Tradición vinícola. Descubre nuestra selección y la historia detrás de cada botella.
+        </p>
+      </dialog>
     </>
   );
 }
